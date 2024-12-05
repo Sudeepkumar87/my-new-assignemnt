@@ -29,43 +29,82 @@ export const SearchApiRequest = () => {
     type: SEARCH_API_REQUEST,
   };
 };
-
 export const SearchGetApi = (props) => {
   const { url, pageNumber, tags, query } = props;
-  
+
   return async (dispatch) => {
-    dispatch(SearchApiRequest()); 
+    dispatch(SearchApiRequest());
 
     let selectedUrl = "";
-    if(query){
+    if (query) {
       selectedUrl = `${baseUrl}?query=${url}&page=${pageNumber}&tags=`;
     }
     if (!query) {
-    
       selectedUrl = `${baseUrl}?query=${url}&page=${pageNumber}&tags=${tags}`;
-   
     }
 
-    if(tags){
-      selectedUrl=`${baseUrl}?query=${url}&page=${pageNumber}&tags=${tags}`
+    if (tags) {
+      selectedUrl = `${baseUrl}?query=${url}&page=${pageNumber}&tags=${tags}`;
     }
 
+    // CORS proxy URL
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 
-
-  
+    const headers = {
+      'Content-Type': 'application/json',
+    };
 
     try {
-    
-      const response = await axios.get(selectedUrl);
+      const response = await axios.get(selectedUrl, {
+        headers: headers, // Add headers if needed
+      });
 
       return response.data;
 
     } catch (error) {
-      console.error("Error in SearchGetApi", error); 
-      throw error; 
+      console.error("Error in SearchGetApi", error);
+      throw error;
     }
   };
 };
+
+
+// export const SearchGetApi = (props) => {
+//   const { url, pageNumber, tags, query } = props;
+  
+//   return async (dispatch) => {
+//     dispatch(SearchApiRequest()); 
+
+//     let selectedUrl = "";
+//     if(query){
+//       selectedUrl = `${baseUrl}?query=${url}&page=${pageNumber}&tags=`;
+//     }
+//     if (!query) {
+    
+//       selectedUrl = `${baseUrl}?query=${url}&page=${pageNumber}&tags=${tags}`;
+   
+//     }
+
+//     if(tags){
+//       selectedUrl=`${baseUrl}?query=${url}&page=${pageNumber}&tags=${tags}`
+//     }
+
+
+
+  
+
+//     try {
+    
+//       const response = await axios.get(selectedUrl,);
+
+//       return response.data;
+
+//     } catch (error) {
+//       console.error("Error in SearchGetApi", error); 
+//       throw error; 
+//     }
+//   };
+// };
 
 
 // export const SearchGetApi = (props) => {
