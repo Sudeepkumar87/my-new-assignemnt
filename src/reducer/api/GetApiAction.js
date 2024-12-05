@@ -1,7 +1,7 @@
 // import {getApiCall,LoginDataResponse} from "../../Api"
 
 import axios from "axios";
-const baseUrl = "http://hn.algolia.com/api/v1/search";
+const baseUrl = "https://hn.algolia.com/api/v1/search";
 
 
 
@@ -49,7 +49,7 @@ export const SearchGetApi = (props) => {
 
     const headers = {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*' // This only works if the server allows it
+      'Access-Control-Allow-Origin': '*' 
     };
 
     try {
