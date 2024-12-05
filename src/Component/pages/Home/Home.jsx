@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Search from "../../organisms/Search";
-import { MainGetApi, SearchGetApi } from "../../../reducer/api/GetApiAction";
-import { useSelector, useDispatch } from "react-redux";
+import {  SearchGetApi } from "../../../reducer/api/GetApiAction";
+import {  useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import Customization from "../../organisms/Customization";
 import Box from "@mui/material/Box";
@@ -10,6 +10,7 @@ import Author from "../../organisms/Author";
 import moment from "moment";
 import { useDebounce } from "use-debounce";
 import Paginaltion from "../../organisms/Paginaltion";
+
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -114,6 +115,7 @@ const Home = () => {
       searchApiData(debouncedSearchTerm || "keys" || "", currentPage ,selectedSearch );
     }
   }, [debouncedSearchTerm]);
+  
   useEffect(() => {
     setCurrentPage(1);
   }, [debouncedSearchTerm]);

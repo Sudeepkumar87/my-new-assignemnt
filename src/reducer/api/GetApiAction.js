@@ -1,4 +1,4 @@
-import {getApiCall,LoginDataResponse} from "../../Api"
+// import {getApiCall,LoginDataResponse} from "../../Api"
 
 import axios from "axios";
 const baseUrl = "http://hn.algolia.com/api/v1/search";

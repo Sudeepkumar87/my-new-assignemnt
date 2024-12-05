@@ -4,7 +4,7 @@ import { Typography, Button, InputAdornment, TextField } from "@mui/material";
 import background from "../../assets/background.png";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { postLoginData } from "../../../reducer/api/GetApiAction";
 import { useNavigate } from "react-router-dom";
 

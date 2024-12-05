@@ -1,9 +1,8 @@
 import React from "react";
 import {
-  TextField,
-  IconButton,
+
   Typography,
-  InputAdornment,
+
   Box,
 } from "@mui/material";
 const Author = ({ selectedText, daysAgo }) => {
@@ -21,6 +20,7 @@ const Author = ({ selectedText, daysAgo }) => {
             <a
               href={item?.url}
               target="_blank"
+              rel="noreferrer noopener"
               style={{
                 color: "#828282",
                 listStyle: "none",
