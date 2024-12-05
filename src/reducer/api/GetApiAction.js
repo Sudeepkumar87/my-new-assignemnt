@@ -33,7 +33,7 @@ export const SearchGetApi = (props) => {
   const { url, pageNumber, tags, query } = props;
 
 
-  const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000'; // Default to local for development
+  // const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000'; // Default to local for development
 
   return async (dispatch) => {
     dispatch(SearchApiRequest());
