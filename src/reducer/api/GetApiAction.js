@@ -32,6 +32,9 @@ export const SearchApiRequest = () => {
 export const SearchGetApi = (props) => {
   const { url, pageNumber, tags, query } = props;
 
+  // Use environment variable for baseUrl in production or development
+  const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000'; // Default to local for development
+
   return async (dispatch) => {
     dispatch(SearchApiRequest());
 
@@ -47,16 +50,13 @@ export const SearchGetApi = (props) => {
       selectedUrl = `${baseUrl}?query=${url}&page=${pageNumber}&tags=${tags}`;
     }
 
-    // CORS proxy URL
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-
     const headers = {
       'Content-Type': 'application/json',
     };
 
     try {
       const response = await axios.get(selectedUrl, {
-        headers: headers, // Add headers if needed
+        headers: headers,
       });
 
       return response.data;
@@ -67,6 +67,7 @@ export const SearchGetApi = (props) => {
     }
   };
 };
+
 
 
 // export const SearchGetApi = (props) => {
