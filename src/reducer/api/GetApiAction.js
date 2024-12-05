@@ -31,40 +31,35 @@ export const SearchApiRequest = () => {
 };
 export const SearchGetApi = (props) => {
   const { url, pageNumber, tags, query } = props;
-
-
-  // const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000'; // Default to local for development
-
+  
   return async (dispatch) => {
     dispatch(SearchApiRequest());
 
     let selectedUrl = "";
-    if (query) {
+    if(query){
       selectedUrl = `${baseUrl}?query=${url}&page=${pageNumber}&tags=`;
     }
     if (!query) {
       selectedUrl = `${baseUrl}?query=${url}&page=${pageNumber}&tags=${tags}`;
     }
 
-    if (tags) {
+    if(tags){
       selectedUrl = `${baseUrl}?query=${url}&page=${pageNumber}&tags=${tags}`;
     }
 
     const headers = {
       'Content-Type': 'application/json',
-      "Access-Control-Allow-Origin": '*' 
+      'Access-Control-Allow-Origin': '*' // This only works if the server allows it
     };
 
     try {
-      const response = await axios.get(selectedUrl, {
-        headers: headers,
-      });
+      const response = await axios.get(selectedUrl, { headers: headers });
 
       return response.data;
 
     } catch (error) {
-      console.error("Error in SearchGetApi", error);
-      throw error;
+      console.error("Error in SearchGetApi", error); 
+      throw error; 
     }
   };
 };
@@ -92,7 +87,10 @@ export const SearchGetApi = (props) => {
 //     }
 
 
-
+//     const headers = {
+//       'Content-Type': 'application/json',
+//       "Access-Control-Allow-Origin": '*' 
+//     };
   
 
 //     try {
